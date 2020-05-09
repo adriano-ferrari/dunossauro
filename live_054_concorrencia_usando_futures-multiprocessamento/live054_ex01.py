@@ -9,7 +9,6 @@ l_urls = ['https://google.com'] * 6
 # print(list(result))
 
 
-
 print('Threads')
 with ThreadPoolExecutor(max_workers=3) as executor:
     """
@@ -17,6 +16,13 @@ with ThreadPoolExecutor(max_workers=3) as executor:
     executor.__exit__ -> executor.shutdown (wait= True)
     """
     result = executor.map(get, l_urls, timeout=0.01)
+    print(result)
+
+print(list(result))
+
+print('Processo')
+with ProcessPoolExecutor() as executor:
+    result = executor.map(get, l_urls)
     print(result)
 
 print(list(result))
