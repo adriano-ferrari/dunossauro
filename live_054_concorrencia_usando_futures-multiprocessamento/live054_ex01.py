@@ -1,5 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 from requests import get
+from functools import partial
+from os import getpid
 
 
 l_urls = ['https://google.com'] * 6
@@ -22,7 +24,7 @@ print(list(result))
 
 print('Processo')
 with ProcessPoolExecutor() as executor:
-    result = executor.map(get, l_urls)
+    result = executor.map(partial(print, getpid()))
     print(result)
 
 print(list(result))
