@@ -1,8 +1,8 @@
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from time import sleep
 
 
-with ThreadPoolExecutor(max_workers=1) as exe:
+with ProcessPoolExecutor() as exe:
     """
     GIL: tarefas bloqueantes de I/O.
 
