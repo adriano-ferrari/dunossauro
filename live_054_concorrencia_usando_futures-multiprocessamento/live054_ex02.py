@@ -4,6 +4,9 @@ from functools import partial
 
 l_ints = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+def ident(x):
+    return x
+
 
 with ProcessPoolExecutor() as exe:
     """
@@ -13,7 +16,7 @@ with ProcessPoolExecutor() as exe:
     """
     l_futures = []
     for e in l_ints:
-        worker = exe.submit(print, e)
+        worker = exe.submit(ident, e)
         l_futures.append(worker)
 
 
