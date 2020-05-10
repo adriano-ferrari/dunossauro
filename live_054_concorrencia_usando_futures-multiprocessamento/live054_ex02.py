@@ -2,6 +2,8 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from time import sleep
 from functools import partial
 
+l_ints = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 
 with ProcessPoolExecutor() as exe:
     """
@@ -9,13 +11,13 @@ with ProcessPoolExecutor() as exe:
 
     Darão bypass no GIL
     """
-    result_0 = exe.submit(sleep, 5)
-    result_1 = exe.submit(print, 'oi')
-    print(result_0)
-    print(result_1)
+    l_futures = []
+    for e in l_ints:
+        worker = exe.submit(sleep, e)
+        l_futures.append(worker)
 
 
     # result_0.add_done_callback(partial(print, 'acabei'))
-    for worker in as_completed([result_0, result_1]):
+    for worker in as_completed(l_futures):
         resp = worker.result()
         print(worker, resp)
