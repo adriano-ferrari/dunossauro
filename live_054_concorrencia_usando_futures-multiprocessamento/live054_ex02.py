@@ -13,7 +13,7 @@ with ProcessPoolExecutor() as exe:
     """
     l_futures = []
     for e in l_ints:
-        worker = exe.submit(sleep, e)
+        worker = exe.submit(print, e)
         l_futures.append(worker)
 
 
