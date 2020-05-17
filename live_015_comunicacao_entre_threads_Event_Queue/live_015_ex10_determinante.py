@@ -24,7 +24,7 @@ def secundaria(mat):
     q.put(mat[1][0] * mat[0][1])
 
 
-def result(mat):
+def result():
     count = 0
     while not q.full():
         count += 1

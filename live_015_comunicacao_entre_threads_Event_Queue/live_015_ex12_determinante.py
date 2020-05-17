@@ -27,7 +27,7 @@ def secundaria(mat):
     # e.set()
 
 
-def result(mat):
+def result():
     e.wait()
     r.put(reduce(lambda x, y: x - y, q.queue))
 
